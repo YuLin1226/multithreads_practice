@@ -13,10 +13,16 @@ int main()
         std::cout << "please input number: " << std::endl;
         int a;
         std::cin >> a;
-        if (a < -100) {
+        if (a < -100) 
+        {
             break;
         }
-        ex.setNumber(a);
+
+        if(ex.getNumber() == -1)
+        {
+            ex.setNumber(a);
+        }
+
     }
 
     return 0;

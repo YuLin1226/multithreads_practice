@@ -2,7 +2,7 @@
 #include <iostream>
 
 Example::Example()
-: running_{false}, number_{0}
+: running_{false}, number_{-1}
 {
     // Lambda expression
     th_ = std::thread([this]()
@@ -25,9 +25,8 @@ void Example::stop()
 
 void Example::setNumber(int number) 
 {
-        std::lock_guard<std::mutex> lock(mtx_);
-        std::cout << "setNumber: " << number << std::endl;
-        number_ = number;
+    std::lock_guard<std::mutex> lock(mtx_);
+    number_ = number;
 }
 
 int Example::getNumber()
