@@ -54,9 +54,11 @@ void Example::thread_body()
         auto number = getNumber();
         if(number > 0)
         {
-            std::lock_guard<std::mutex> lock(mtx_);
-            std::cout << "send to driver: " << number_ << std::endl;
-            std::this_thread::sleep_for(std::chrono::seconds(1));
+            {
+                std::lock_guard<std::mutex> lock(mtx_);
+                std::cout << "send to driver: " << number_ << std::endl;
+                std::this_thread::sleep_for(std::chrono::seconds(1));
+            }
             setNumber(-1);
         }
     }
